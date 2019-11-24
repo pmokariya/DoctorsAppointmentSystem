@@ -1,0 +1,21 @@
+<div class="container">
+  <dl class="dl-horizontal" style="font-size: 16px;">
+    <dt>Reason :</dt>
+    <dd><%= @appointment.details %></dd><br>
+
+    <dt>Date:</dt>
+    <dd><%= @appointment.appointment_date %></dd><br>
+
+    <dt>Manager:</dt>
+    <dd>
+      <% appointment_doctor = Doctor.find(@appointment.doctor_id) %>
+      <%= appointment_doctor.name.present? ? appointment_doctor.name : appointment_doctor.email.split('@')[0] %>
+    </dd><br>
+
+    <dt> Status: </dt>
+    <dd>
+      <%= @appointment.status %>
+    </dd>
+  </dl>
+  <h3><strong><%= link_to 'Back', root_path,:class=>"pull-right" %></strong></h3>
+</div>

@@ -1,0 +1,11 @@
+<%= link_to 'Edit Profile', edit_patient_path(@patient) ,:style=>"margin-bottom: 15px;",:class=>"pull-right btn btn-info" %>
+<div class="container">
+  <dl class="dl-horizontal" style="font-size: 16px;">
+    <dt>Name :</dt>
+    <dd><%= @patient.name %></dd><br>
+
+    <dt>Email:</dt>
+    <dd><%= @patient.email %></dd><br>
+  </dl>
+  <h3><strong><%= link_to 'Back', root_path,:class=>"pull-right" %></strong></h3>
+</div>

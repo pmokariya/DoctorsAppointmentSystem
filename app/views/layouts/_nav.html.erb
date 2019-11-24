@@ -1,0 +1,40 @@
+<div class="jumbotron" style="padding-top: 10px; padding-bottom: 35px;">
+  <h5>
+    <div class="pull-left">
+      <%= link_to 'All Appointments', appointments_path %>
+      <% if !patient_signed_in?%>
+        <% if doctor_signed_in? %>
+        | <%= link_to 'Your Profile', doctor_path(current_doctor) %> |
+        <%= link_to 'Your Schedule', unavailabilities_path %>
+        <% end %>
+      <% end %>
+      <% if !doctor_signed_in?%>
+        <% if patient_signed_in? %>
+        | <%= link_to 'Your Profile', patient_path(current_patient) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="pull-right" id="user_nav">
+      <div id="user_nav">
+        <% if !doctor_signed_in? %>
+          <% if patient_signed_in? %>
+            Patient <%= current_patient.email %>
+            <%= link_to "Sign out", destroy_patient_session_path, :method => :delete %>
+          <% else %>
+            <%= link_to "Patient Sign up", new_patient_registration_path %> |
+            <%= link_to "Patient sign in", new_patient_session_path %>
+          <% end %>
+        <% end %>
+        <% if !patient_signed_in?%>
+          <% if doctor_signed_in? %>
+            Doctor: <%= current_doctor.email %>
+            <%= link_to "Sign out", destroy_doctor_session_path, :method => :delete %>
+          <% else %>
+            <%= link_to "Doctor Sign up", new_doctor_registration_path %> |
+            <%= link_to "Doctor sign in", new_doctor_session_path %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </h5>
+</div>

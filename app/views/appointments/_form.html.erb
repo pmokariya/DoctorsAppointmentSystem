@@ -1,0 +1,47 @@
+<%= form_with(model: appointment, local: true) do |form| %>
+  <% if appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+      <ul>
+      <% appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :details %>
+    <%= form.text_field :details , class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :doctor_id %><br />
+    <%= select_tag :doctor_id,options_from_collection_for_select(@doctors, :id, :name), { prompt: "Select a doctor", class: "form-control" } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :appointment_date %>
+    <%= form.text_field :appointment_date ,:size=>"40", :id=>"datepicker" , class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :slot %>
+    <%= form.select :slot, options_for_select(Appointment::SLOT), {}, prompt: "Select a slot", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-default" %>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function () {
+    $(function(){
+      $( "#datepicker" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        minDate: 0
+      });
+    });
+  });
+</script>

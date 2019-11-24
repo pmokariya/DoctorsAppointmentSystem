@@ -1,0 +1,30 @@
+Metrics/LineLength:
+  Max: 90
+  Exclude:
+    - '**/db/schema.rb'
+Metrics/ClassLength:
+  Max: 120
+Rails:
+  Enabled: true
+Lint/UnreachableCode:
+  Enabled: false
+AllCops:
+  Exclude:
+    - '**/bin/*'
+    - '**/vendor/bundle/**/*'
+  TargetRubyVersion: 2.5.6
+Metrics/BlockLength:
+  Exclude:
+    - '**/config/routes.rb'
+    - '**/config/environments/*'
+    - '**/config/initializers/*'
+    - '**/db/migrate/*'
+    - '**/db/schema.rb'
+    - '**/spec/**/*'
+Metrics/AbcSize:
+  Exclude:
+    - '**/db/migrate/*'
+    - '**/spec/**/*'
+Metrics/MethodLength:
+  Exclude:
+    - '**/db/migrate/*'
