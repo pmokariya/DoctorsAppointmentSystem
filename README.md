@@ -1,6 +1,6 @@
 # DoctorsAppointmentSystem
 
-MVP for Doctors Appointment System.
+MVP for Doctors Appointment System
 
 - Features are listed here
 
